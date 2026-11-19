@@ -13,7 +13,7 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
 - **What we are:** A youth football club with multiple teams playing in the **CWYFL** (Central Warwickshire Youth Football League). The league is on FA Full-Time as league ID `4385806`: https://fulltime.thefa.com/index.html?league=4385806
 - **Accreditation:** England Football Accredited, **1 Star**. Show the badge prominently, because it reassures parents.
 - **Home ground:** Arden Hall Playing Fields, Castle Bromwich, Birmingham, **B36 9PB**, United Kingdom
-- **Founded:** [YEAR]
+- **Founded:** June 2024. 2026/27 is the club's third season, after 2024/25 and 2025/26. Use "Est. 2024" in the footer and next to the crest where it fits. Present the club as young and fast-growing: from founding in 2024 to multiple CWYFL teams and FA 1-Star Accreditation within two seasons.
 - **Teams / age groups:** Each team is named by age group plus a nickname, in the format "Castle Bromwich Lions U8 Spitfires". Confirmed so far:
   - **U8 age group: four teams.** All play CWYFL development fixtures ("DEVP"), so no scores or tables are published. The U8 division-season ID on Full-Time is `796460763`. The "Played" column counts games played so far in 2026/27.
 
@@ -84,10 +84,10 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
    - links to the FA safeguarding pages and the NSPCC
 10. **Sponsors.** Sponsors by tier, with logos and links, plus a "Sponsor a team / kit" enquiry form.
 11. **About.** Include:
-    - club history
+    - club history: a timeline starting with the founding in June 2024, then each season's milestones such as new teams and the accreditation [DATES TO CONFIRM]
     - the accreditation
     - the committee: Chairman Hassan Saleh, Secretary Luke Sandford, [Treasurer], [Welfare Officer]
-    - honours
+    - honours, if any. Hide this section until there's something to show, since the club is new and its U8 teams play non-competitive development football
     - ground info for Arden Hall Playing Fields with an embedded map, parking details and the B36 9PB postcode
 12. **Contact.** A form, committee contacts, a map and social links.
 
