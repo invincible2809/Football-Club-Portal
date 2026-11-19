@@ -1,8 +1,8 @@
 # Prompt: Build the Castle Bromwich Lions FC Youth Portal
 
 > Details below come from the club's Facebook page
-> (https://www.facebook.com/share/1DMu8eeUUJ/). Fields still in `[BRACKETS]`
-> were not visible there and need confirming with the club.
+> (https://www.facebook.com/share/1DMu8eeUUJ/) and FA Full-Time. Anything marked
+> **TBD** is still to be confirmed with the club. See "Handling TBD details" below.
 
 ---
 
@@ -24,17 +24,17 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
     | Castle Bromwich Lions U8 Lions | `794253502` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=794253502) | 10 |
     | Castle Bromwich Lions U8 Spitfires | `457917099` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=457917099) | 11 |
 
-  - [OTHER AGE GROUPS, if any: age group, nickname and Full-Time team ID for each]
+  - Other age groups: **TBD**. The team data model must let admins add new age groups and teams, each with its own Full-Time team ID, without code changes.
   - Group teams by age group on the site. The "Our Teams" page lists age groups, and each age group lists its teams. Keep the nicknames (Colts, Cubs, Lions, Spitfires) as each team's identity, and give each team its own page, fixtures feed and calendar.
 - **Club colours (from the crest):** red `#D7262B`, royal blue `#1F4FA3`, yellow/gold `#F7D417`, black `#111111`. White is the neutral.
-- **Crest:** A shield split into red and blue quarters with a yellow border. It shows a crowned yellow lion with two footballs and the words "Castle Bromwich" / "Lions FC". Use the supplied crest file as-is: [PATH TO HIGH-RES CREST FILE]. Don't redesign it.
+- **Crest:** A shield split into red and blue quarters with a yellow border. It shows a crowned yellow lion with two footballs and the words "Castle Bromwich" / "Lions FC". High-res crest file: **TBD**. Until it arrives, use a cropped placeholder taken from the Facebook profile picture, and keep it easy to swap. Don't redesign the crest.
 - **Current campaign / tagline:** "Say hello to our best season yet."
 - **Committee contacts:**
   - Chairman: Hassan Saleh, 07810 015315
   - Secretary: Luke Sandford, 07900 561839
-  - Welfare Officer: [NAME, CONTACT] (required for an FA-accredited youth club)
-- **Email:** [CLUB EMAIL]
-- **Social links:** Facebook https://www.facebook.com/share/1DMu8eeUUJ/ , Instagram [URL], TikTok [URL]
+  - Welfare Officer: **TBD** (required for an FA-accredited youth club)
+- **Email:** **TBD**. Until confirmed, send contact and registration forms to an address set in config.
+- **Social links:** Facebook https://www.facebook.com/share/1DMu8eeUUJ/ , Instagram **TBD**, TikTok **TBD**. Hide the icon for any link that isn't set.
 - **Currency:** GBP (£)
 - **Language:** English (UK spelling)
 
@@ -74,7 +74,7 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
    - photo consent
    - code-of-conduct acceptance
 
-   Also include a fees and subs section ([AMOUNTS]) and a link out to the payment method ([e.g. ClubBuzz / Pitchero / bank transfer / GoCardless]). Don't handle card details on the site.
+   Also include a fees and subs section (amounts **TBD**) and a link out to the payment method (**TBD**, e.g. ClubBuzz / Pitchero / bank transfer / GoCardless). Don't handle card details on the site.
 8. **Volunteer / Coach with us.** Roles available, DBS check and FA coaching course information, and an enquiry form.
 9. **Safeguarding & Welfare.** This is mandatory for a youth club. Include:
    - the Welfare Officer's contact details
@@ -84,9 +84,9 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
    - links to the FA safeguarding pages and the NSPCC
 10. **Sponsors.** Sponsors by tier, with logos and links, plus a "Sponsor a team / kit" enquiry form.
 11. **About.** Include:
-    - club history: a timeline starting with the founding in June 2024, then each season's milestones such as new teams and the accreditation [DATES TO CONFIRM]
+    - club history: a timeline starting with the founding in June 2024, then each season's milestones such as new teams and the accreditation (milestone dates **TBD**)
     - the accreditation
-    - the committee: Chairman Hassan Saleh, Secretary Luke Sandford, [Treasurer], [Welfare Officer]
+    - the committee: Chairman Hassan Saleh, Secretary Luke Sandford, Treasurer **TBD**, Welfare Officer **TBD**
     - honours, if any. Hide this section until there's something to show, since the club is new and its U8 teams play non-competitive development football
     - ground info for Arden Hall Playing Fields with an embedded map, parking details and the B36 9PB postcode
 12. **Contact.** A form, committee contacts, a map and social links.
@@ -188,6 +188,12 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
   | 29/11/26 | 10:30 | **CB Lions U8 Spitfires** | Cottage Farm Rangers U8 United | Upcoming, Castle Bromwich Playing Fields Pitch 3 |
 
 - Include a README with setup steps, how to edit content, and how to deploy.
+
+## Handling TBD details
+- Keep every TBD value in one config/content file (e.g. `content/club.json`) so the committee can fill it in later without a developer.
+- Show nothing broken or empty to visitors while a value is TBD. Hide the field, or show a neutral fallback such as "Contact the club via Facebook".
+- **Exception:** the Welfare Officer contact is a safeguarding requirement. Until it's set, the Safeguarding page shows the Secretary's contact with a note, and the admin area shows a visible "Welfare Officer not set" warning.
+- Add a "Pending club details" list to the README naming each TBD item.
 
 ## Deliverables
 1. A working codebase in this repository.
