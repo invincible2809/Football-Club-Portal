@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "u8-colts",
+    "name": "Castle Bromwich Lions U8 Colts",
+    "nickname": "Colts",
+    "ageGroup": "U8",
+    "fulltimeTeamId": "176714321",
+    "fulltimeDivisionSeasonId": "796460763",
+    "format": "development",
+    "showScores": false,
+    "training": null,
+    "manager": null
+  },
+  {
+    "slug": "u8-cubs",
+    "name": "Castle Bromwich Lions U8 Cubs",
+    "nickname": "Cubs",
+    "ageGroup": "U8",
+    "fulltimeTeamId": "913557206",
+    "fulltimeDivisionSeasonId": "796460763",
+    "format": "development",
+    "showScores": false,
+    "training": null,
+    "manager": null
+  },
+  {
+    "slug": "u8-lions",
+    "name": "Castle Bromwich Lions U8 Lions",
+    "nickname": "Lions",
+    "ageGroup": "U8",
+    "fulltimeTeamId": "794253502",
+    "fulltimeDivisionSeasonId": "796460763",
+    "format": "development",
+    "showScores": false,
+    "training": null,
+    "manager": null
+  },
+  {
+    "slug": "u8-spitfires",
+    "name": "Castle Bromwich Lions U8 Spitfires",
+    "nickname": "Spitfires",
+    "ageGroup": "U8",
+    "fulltimeTeamId": "457917099",
+    "fulltimeDivisionSeasonId": "796460763",
+    "format": "development",
+    "showScores": false,
+    "training": null,
+    "manager": null
+  }
+]

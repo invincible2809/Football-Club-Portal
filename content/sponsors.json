@@ -1,0 +1,6 @@
+{
+  "_note": "SAMPLE DATA – replace with real sponsors. Set sample to false on real entries.",
+  "sponsors": [
+    { "name": "Your Business Here", "tier": "Kit sponsor", "url": null, "logo": null, "sample": true }
+  ]
+}

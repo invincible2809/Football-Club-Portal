@@ -1,0 +1,37 @@
+{
+  "name": "castle-bromwich-lions-fc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Website for Castle Bromwich Lions FC (youth) – CWYFL",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test scripts/*.test.mjs",
+    "import:fulltime": "node scripts/import-fulltime.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
+    "cheerio": "^1.2.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^18.2.1",
+    "next": "^15.5.29",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.7.0",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2"
+  }
+}

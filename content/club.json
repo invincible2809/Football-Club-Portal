@@ -1,0 +1,50 @@
+{
+  "name": "Castle Bromwich Lions FC",
+  "shortName": "CB Lions",
+  "nickname": "The Lions",
+  "founded": "June 2024",
+  "foundedYear": 2024,
+  "tagline": "Say hello to our best season yet.",
+  "description": "Castle Bromwich Lions Football Club with multiple youth teams playing in the CWYFL.",
+  "siteUrl": "https://castlebromwichlionsfc.example",
+  "accreditation": {
+    "label": "England Football Accredited – 1 Star",
+    "stars": 1,
+    "date": null
+  },
+  "ground": {
+    "name": "Arden Hall Playing Fields",
+    "alsoKnownAs": "Castle Bromwich Playing Fields",
+    "area": "Castle Bromwich, Birmingham",
+    "postcode": "B36 9PB",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Arden+Hall+Playing+Fields+Castle+Bromwich+B36+9PB",
+    "parking": null
+  },
+  "contacts": {
+    "chairman": { "name": "Hassan Saleh", "phone": "07810 015315" },
+    "secretary": { "name": "Luke Sandford", "phone": "07900 561839" },
+    "treasurer": null,
+    "welfareOfficer": null
+  },
+  "email": null,
+  "social": {
+    "facebook": "https://www.facebook.com/share/1DMu8eeUUJ/",
+    "facebookPagePluginUrl": null,
+    "instagram": null,
+    "tiktok": null
+  },
+  "fees": null,
+  "paymentUrl": null,
+  "formEndpoint": null,
+  "league": {
+    "name": "Central Warwickshire Youth Football League",
+    "shortName": "CWYFL",
+    "fulltimeLeagueId": "4385806",
+    "url": "https://fulltime.thefa.com/index.html?league=4385806"
+  },
+  "timeline": [
+    { "date": "June 2024", "title": "Club founded", "text": "Castle Bromwich Lions FC is formed to give local children a friendly, well-run place to play football." },
+    { "date": null, "title": "FA 1-Star Accreditation", "text": "The club earns England Football Accredited status (1 Star)." },
+    { "date": "September 2026", "title": "Four U8 teams in the CWYFL", "text": "The Colts, Cubs, Lions and Spitfires kick off the 2026/27 season." }
+  ]
+}

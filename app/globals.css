@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100;
+  }
+  :focus-visible {
+    @apply outline outline-[3px] outline-offset-2 outline-lion-gold;
+  }
+}
+
+/* Simple typography for markdown / long-form pages */
+.prose-club h2 { @apply mt-8 font-display text-2xl font-bold uppercase text-lion-blueDark dark:text-white; }
+.prose-club h3 { @apply mt-6 text-lg font-bold; }
+.prose-club a { @apply text-lion-blue underline dark:text-blue-300; }
+.prose-club ul { @apply list-disc space-y-1 pl-6; }
+.prose-club ol { @apply list-decimal space-y-1 pl-6; }

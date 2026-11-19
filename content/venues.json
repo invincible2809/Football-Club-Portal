@@ -1,0 +1,7 @@
+[
+  { "match": "CASTLE BROMWICH PLAYING FIELDS", "name": "Arden Hall Playing Fields (home)", "postcode": "B36 9PB", "isHome": true },
+  { "match": "ARDEN GARAGES STADIUM", "name": "Arden Garages Stadium (Stratford Town)", "postcode": null, "isHome": false },
+  { "match": "WYCHALL WANDERERS FOOTBALL CLUB", "name": "Wychall Wanderers FC", "postcode": null, "isHome": false },
+  { "match": "CASTLE VALE FOOTBALL STADIUM", "name": "Castle Vale Football Stadium", "postcode": null, "isHome": false },
+  { "match": "NORTH WARWICKSHIRE AND SOUTH LEICESTERSHIRE COLLEGE (NUNEATON)", "name": "North Warwickshire & South Leicestershire College, Nuneaton", "postcode": null, "isHome": false }
+]
