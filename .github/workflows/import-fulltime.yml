@@ -1,0 +1,36 @@
+name: Import fixtures from FA Full-Time
+on:
+  schedule:
+    - cron: '17 5 * * *' # every day at about 05:17 UTC
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run import:fulltime
+      - name: Commit changes
+        run: |
+          if git diff --quiet content/fixtures.json; then
+            echo "No fixture changes."
+            exit 0
+          fi
+          git config user.name "fixtures-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/fixtures.json
+          git commit -m "Update fixtures from FA Full-Time"
+          git push
+      # Rebuild the site daily even when fixtures didn't change, so "upcoming" and "played"
+      # move over correctly. Create a build hook in Netlify and save it as the NETLIFY_BUILD_HOOK secret.
+      - name: Trigger daily rebuild
+        env:
+          HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -n "$HOOK" ]; then curl -fsS -X POST -d '{}' "$HOOK"; else echo "NETLIFY_BUILD_HOOK not set – skipping"; fi

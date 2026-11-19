@@ -44,12 +44,12 @@ export type Fixture = {
 export type Venue = { name: string; postcode: string | null; isHome: boolean; mapUrl: string; pitch: string | null };
 
 export { club };
-export const teams = teamsData as Team[];
-export const fixtures = (fixturesData as Fixture[]).slice().sort((a, b) => fixtureKey(a).localeCompare(fixtureKey(b)));
+export const teams = teamsData.teams as Team[];
+export const fixtures = (fixturesData.fixtures as Fixture[]).slice().sort((a, b) => fixtureKey(a).localeCompare(fixtureKey(b)));
 export const sponsors = sponsorsData.sponsors;
 export const gallery = galleryData.albums as { title: string; date: string; photos: { src: string; alt: string }[] }[];
 
-const venues = venuesData as { match: string; name: string; postcode: string | null; isHome: boolean }[];
+const venues = venuesData.venues as { match: string; name: string; postcode: string | null; isHome: boolean }[];
 
 function fixtureKey(f: Fixture) {
   return `${f.date}T${f.time ?? '00:00'}`;
@@ -129,19 +129,4 @@ export function fulltimeTeamUrl(t: Team) {
 export function safeguardingContact() {
   const w = club.contacts.welfareOfficer as Person;
   return w ? { role: 'Club Welfare Officer', person: w, fallback: false } : { role: 'Club Secretary', person: club.contacts.secretary as Person, fallback: true };
-}
-
-/** List of details still marked TBD in content/club.json – shown in the README checklist and admin warnings. */
-export function pendingDetails() {
-  const c = club as Club & Record<string, unknown>;
-  const items: string[] = [];
-  if (!c.contacts.welfareOfficer) items.push('Welfare Officer');
-  if (!c.contacts.treasurer) items.push('Treasurer');
-  if (!c.email) items.push('Club email');
-  if (!c.fees) items.push('Fees & subs');
-  if (!c.paymentUrl) items.push('Payment method');
-  if (!c.formEndpoint) items.push('Form endpoint');
-  if (!c.social.instagram) items.push('Instagram');
-  if (!c.social.tiktok) items.push('TikTok');
-  return items;
 }

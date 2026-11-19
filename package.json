@@ -10,7 +10,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "node --test scripts/*.test.mjs",
-    "import:fulltime": "node scripts/import-fulltime.mjs"
+    "import:fulltime": "node scripts/import-fulltime.mjs",
+    "prebuild": "node scripts/check-content.mjs",
+    "check:content": "node scripts/check-content.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -32,6 +34,6 @@
     "autoprefixer": "^10.7.0",
     "postcss": "^8.5.33",
     "tailwindcss": "^3.4.19",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3"
   }
 }

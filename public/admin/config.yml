@@ -1,0 +1,185 @@
+# Decap CMS – lets committee members edit the website in a browser at /admin/.
+# Uses Netlify Identity + Git Gateway (free). See docs/ADMIN-GUIDE.md.
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+site_url: https://castlebromwichlionsfc.example
+locale: en
+
+collections:
+  - name: news
+    label: News
+    label_singular: Article
+    folder: content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: Category, name: category, widget: select, options: ["Club news", "Match report", "Events"] }
+      - { label: Short summary, name: excerpt, widget: text }
+      - { label: Sample content (hide from launch checklist), name: sample, widget: boolean, default: false, required: false }
+      - { label: Body, name: body, widget: markdown, hint: "Never use children's surnames." }
+
+  - name: settings
+    label: Club settings
+    files:
+      - name: club
+        label: Club details
+        file: content/club.json
+        fields:
+          - { label: Club name, name: name, widget: string }
+          - { label: Short name, name: shortName, widget: string }
+          - { label: Nickname, name: nickname, widget: string }
+          - { label: Founded, name: founded, widget: string }
+          - { label: Founded year, name: foundedYear, widget: number }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Description, name: description, widget: text }
+          - { label: Website address, name: siteUrl, widget: string }
+          - label: Accreditation
+            name: accreditation
+            widget: object
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Stars, name: stars, widget: number }
+              - { label: Date awarded, name: date, widget: string, required: false }
+          - label: Ground
+            name: ground
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Name on Full-Time, name: alsoKnownAs, widget: string }
+              - { label: Area, name: area, widget: string }
+              - { label: Postcode, name: postcode, widget: string }
+              - { label: Map link, name: mapUrl, widget: string }
+              - { label: Parking info, name: parking, widget: text, required: false }
+          - label: Contacts
+            name: contacts
+            widget: object
+            hint: "Leave a role empty if it is TBD – the website hides it."
+            fields:
+              - { label: Chairman, name: chairman, widget: object, fields: [{ label: Name, name: name, widget: string }, { label: Phone, name: phone, widget: string }] }
+              - { label: Secretary, name: secretary, widget: object, fields: [{ label: Name, name: name, widget: string }, { label: Phone, name: phone, widget: string }] }
+              - { label: Treasurer, name: treasurer, widget: object, required: false, fields: [{ label: Name, name: name, widget: string }, { label: Phone, name: phone, widget: string, required: false }] }
+              - { label: Club Welfare Officer, name: welfareOfficer, widget: object, required: false, fields: [{ label: Name, name: name, widget: string }, { label: Phone, name: phone, widget: string, required: false }] }
+          - { label: Club email, name: email, widget: string, required: false }
+          - label: Social media
+            name: social
+            widget: object
+            fields:
+              - { label: Facebook link, name: facebook, widget: string }
+              - { label: Facebook page URL for the news feed (facebook.com/page-name), name: facebookPagePluginUrl, widget: string, required: false }
+              - { label: Instagram, name: instagram, widget: string, required: false }
+              - { label: TikTok, name: tiktok, widget: string, required: false }
+          - { label: Fees & subs, name: fees, widget: text, required: false }
+          - { label: Online payment link, name: paymentUrl, widget: string, required: false }
+          - { label: Form endpoint (e.g. Formspree URL), name: formEndpoint, widget: string, required: false }
+          - label: League
+            name: league
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Short name, name: shortName, widget: string }
+              - { label: Full-Time league ID, name: fulltimeLeagueId, widget: string }
+              - { label: League link, name: url, widget: string }
+          - label: Club timeline
+            name: timeline
+            widget: list
+            fields:
+              - { label: Date, name: date, widget: string, required: false }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+
+      - name: teams
+        label: Teams
+        file: content/teams.json
+        fields:
+          - label: Teams
+            name: teams
+            widget: list
+            hint: "Add a team, then paste its Full-Time team ID. Fixtures import automatically the next morning."
+            fields:
+              - { label: URL slug (e.g. u9-tigers), name: slug, widget: string }
+              - { label: Full name (as on Full-Time), name: name, widget: string }
+              - { label: Nickname, name: nickname, widget: string }
+              - { label: Age group, name: ageGroup, widget: string }
+              - { label: Full-Time team ID, name: fulltimeTeamId, widget: string, required: false }
+              - { label: Full-Time division-season ID, name: fulltimeDivisionSeasonId, widget: string, required: false }
+              - { label: Format, name: format, widget: select, options: [development, competitive] }
+              - { label: Show scores, name: showScores, widget: boolean, default: false }
+              - { label: Training times, name: training, widget: string, required: false }
+              - { label: Manager (first name + surname is fine for adults), name: manager, widget: string, required: false }
+
+      - name: fixtures
+        label: Fixtures (manual edits)
+        file: content/fixtures.json
+        fields:
+          - label: Fixtures
+            name: fixtures
+            widget: list
+            summary: "{{fields.date}} {{fields.home}} v {{fields.away}}"
+            hint: "Fixtures import from Full-Time every day. Tick 'Locked' on any fixture you change by hand so the import doesn't overwrite it."
+            fields:
+              - { label: ID, name: id, widget: string }
+              - { label: Team slug, name: teamSlug, widget: string }
+              - { label: Date (YYYY-MM-DD), name: date, widget: string }
+              - { label: Kick-off (HH:MM), name: time, widget: string, required: false }
+              - { label: Type, name: type, widget: string, required: false }
+              - { label: Home team, name: home, widget: string }
+              - { label: Away team, name: away, widget: string }
+              - { label: We are home, name: isHome, widget: boolean }
+              - { label: Status, name: status, widget: select, options: [upcoming, played, postponed, abandoned, cancelled, unknown] }
+              - { label: Home score, name: homeScore, widget: number, required: false }
+              - { label: Away score, name: awayScore, widget: number, required: false }
+              - { label: Venue (as on Full-Time), name: venueRaw, widget: string, required: false }
+              - { label: Source, name: source, widget: string }
+              - { label: Source link, name: sourceUrl, widget: string, required: false }
+              - { label: Locked (don't overwrite from Full-Time), name: locked, widget: boolean, required: false, default: false }
+
+      - name: venues
+        label: Venues
+        file: content/venues.json
+        fields:
+          - label: Venues
+            name: venues
+            widget: list
+            fields:
+              - { label: Full-Time venue name starts with, name: match, widget: string }
+              - { label: Display name, name: name, widget: string }
+              - { label: Postcode, name: postcode, widget: string, required: false }
+              - { label: Home ground, name: isHome, widget: boolean }
+
+      - name: sponsors
+        label: Sponsors
+        file: content/sponsors.json
+        fields:
+          - label: Sponsors
+            name: sponsors
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Tier, name: tier, widget: string }
+              - { label: Website, name: url, widget: string, required: false }
+              - { label: Logo, name: logo, widget: image, required: false }
+              - { label: Sample (hidden), name: sample, widget: boolean, default: false }
+
+      - name: gallery
+        label: Gallery
+        file: content/gallery.json
+        fields:
+          - label: Albums
+            name: albums
+            widget: list
+            hint: "Only upload photos where every child pictured has photo consent recorded. Never name children."
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Date, name: date, widget: string }
+              - label: Photos
+                name: photos
+                widget: list
+                fields:
+                  - { label: Photo, name: src, widget: image }
+                  - { label: Description (no names), name: alt, widget: string }

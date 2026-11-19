@@ -27,7 +27,7 @@ export function FixtureRow({ f, showTeam = true }: { f: Fixture; showTeam?: bool
   const cancelled = ['cancelled', 'postponed', 'abandoned'].includes(f.status);
   return (
     <li className="flex flex-col gap-2 border-b border-gray-200 py-3 last:border-0 dark:border-gray-700 sm:flex-row sm:items-center sm:gap-4">
-      <div className="w-32 shrink-0 text-sm">
+      <div className="w-36 shrink-0 whitespace-nowrap text-sm">
         <time dateTime={f.date} className="font-semibold">
           {formatDate(f.date)}
         </time>

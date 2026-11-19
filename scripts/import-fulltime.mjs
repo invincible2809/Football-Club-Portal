@@ -8,8 +8,8 @@ import { parseTeamPage, mergeFixtures } from './lib/fulltime.mjs';
 const root = new URL('../', import.meta.url);
 const read = async (p) => JSON.parse(await readFile(new URL(p, root), 'utf8'));
 
-const teams = await read('content/teams.json');
-let fixtures = await read('content/fixtures.json');
+const { teams } = await read('content/teams.json');
+let { fixtures } = await read('content/fixtures.json');
 let failures = 0;
 const unknown = [];
 
@@ -32,7 +32,7 @@ for (const team of teams) {
   }
 }
 
-await writeFile(new URL('content/fixtures.json', root), JSON.stringify(fixtures, null, 2) + '\n');
+await writeFile(new URL('content/fixtures.json', root), JSON.stringify({ fixtures }, null, 2) + '\n');
 
 if (unknown.length) {
   console.warn(`⚠ ${unknown.length} fixture(s) have an unrecognised status code – please check:`);

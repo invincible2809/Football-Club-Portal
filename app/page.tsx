@@ -18,7 +18,8 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-lion-blueDark text-white">
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,#163A7A_0%,#1F4FA3_55%,#D7262B_55%,#A81B20_100%)]" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-b from-lion-blue to-lion-blueDark md:bg-[linear-gradient(115deg,#163A7A_0%,#1F4FA3_55%,#D7262B_55%,#A81B20_100%)]" aria-hidden />
+        <div className="absolute inset-x-0 bottom-0 h-2 bg-lion-red md:hidden" aria-hidden />
         <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:py-16 md:grid-cols-[1fr_auto]">
           <div>
             <p className="font-display text-lg uppercase tracking-[0.2em] text-lion-gold">Est. {club.foundedYear} · {club.league.shortName}</p>
