@@ -15,14 +15,14 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
 - **Home ground:** Arden Hall Playing Fields, Castle Bromwich, Birmingham, **B36 9PB**, United Kingdom
 - **Founded:** [YEAR]
 - **Teams / age groups:** Each team is named by age group plus a nickname, in the format "Castle Bromwich Lions U8 Spitfires". Confirmed so far:
-  - **U8 age group: four teams.** All play CWYFL development fixtures ("DEVP"), so no scores or tables are published. Games played so far in 2026/27 are shown in brackets.
+  - **U8 age group: four teams.** All play CWYFL development fixtures ("DEVP"), so no scores or tables are published. The U8 division-season ID on Full-Time is `796460763`. The "Played" column counts games played so far in 2026/27.
 
     | Team | Full-Time team ID | Played |
     |---|---|---|
-    | Castle Bromwich Lions U8 Colts | [ID] | 11 |
-    | Castle Bromwich Lions U8 Cubs | [ID] | 10 |
-    | Castle Bromwich Lions U8 Lions | [ID] | 10 |
-    | Castle Bromwich Lions U8 Spitfires | `457917099` (https://fulltime.thefa.com/displayTeam.html?id=457917099) | 11 |
+    | Castle Bromwich Lions U8 Colts | `176714321` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=176714321) | 11 |
+    | Castle Bromwich Lions U8 Cubs | `913557206` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=913557206) | 10 |
+    | Castle Bromwich Lions U8 Lions | `794253502` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=794253502) | 10 |
+    | Castle Bromwich Lions U8 Spitfires | `457917099` (https://fulltime.thefa.com/displayTeam.html?divisionseason=796460763&teamID=457917099) | 11 |
 
   - [OTHER AGE GROUPS, if any: age group, nickname and Full-Time team ID for each]
   - Group teams by age group on the site. The "Our Teams" page lists age groups, and each age group lists its teams. Keep the nicknames (Colts, Cubs, Lions, Spitfires) as each team's identity, and give each team its own page, fixtures feed and calendar.
@@ -60,7 +60,8 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
 3. **Fixtures & Results.** Filter by age group and season. Show home or away, the venue with a Google Maps link, the kick-off time and the score. Each match gets an add-to-calendar (.ics) file.
    - **Source the data from FA Full-Time.** Each team has a Full-Time team ID. Pull upcoming fixtures and results from the team page (`https://fulltime.thefa.com/displayTeam.html?id=<teamID>`) or the league's fixtures and results pages (`fixtures.html?league=4385806`, `results.html?league=4385806`). Do this with a scheduled job, such as a daily GitHub Action or Vercel cron, that writes to a JSON file. The site must not fetch from Full-Time when someone loads a page. Store the source link on every fixture. Fall back to manual entry if the import fails. Each team page should also link to its Full-Time page.
    - **Development fixtures.** Matches of type "DEVP" (non-competitive development games, used for the younger age groups) record their score as "X - X". Show these as "Played" with no score and no league table. Make score display configurable per team.
-   - **Venue naming.** Full-Time names the home venue "CASTLE BROMWICH PLAYING FIELDS Pitch 3" while the club calls it Arden Hall Playing Fields. Map both names to one venue record (B36 9PB), keeping the pitch number.
+   - **Venue naming.** Full-Time names the home venue "CASTLE BROMWICH PLAYING FIELDS" with a pitch (e.g. "Pitch 3", "Pitch 1A"), while the club calls it Arden Hall Playing Fields. Map both names to one venue record (B36 9PB), keeping the pitch number. Away venues come from Full-Time as free text (e.g. "ARDEN GARAGES STADIUM 3G Pitch 1A"). Keep a venues file that maps those names to a tidy display name, postcode and map link, and add new venues as the import finds them.
+   - **Match status codes.** Full-Time shows "X - X" for development games with no score recorded. It shows "P - P" for postponed, "A - A" for abandoned and "C - C" for cancelled or void. Show each as a clear status badge. Treat any code not in this list as unknown and flag it to an admin.
    - Full-Time no longer publishes youth players' names. Mirror that rule: no player names on fixtures or results.
 4. **League Tables.** Per age group, only where Full-Time publishes them (it doesn't for development age groups). Import them with the same Full-Time job and link to the CWYFL tables.
 5. **News.** Match reports, club news and events, with share buttons. Embed the Facebook page feed so posts made on Facebook also appear here.
@@ -114,28 +115,83 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
   - a privacy policy and cookie notice
   - collect only the data you need
   - no public phone numbers for team managers
-- Seed fixtures with the **real U8 Spitfires 2026/27 data** from Full-Time. For the U8 Colts, Cubs and Lions, import their real fixtures from Full-Time once their team IDs are known. Until then, use realistic placeholder content, clearly marked as sample data. Keep it all in easy-to-edit files. Real U8 Spitfires fixtures so far:
+- Seed fixtures with the **real 2026/27 data for all four U8 teams**, taken from Full-Time on 19/11/26 and listed below. The import job then keeps them up to date. Use realistic placeholder content, clearly marked as sample data, for anything else (news, gallery, sponsors). Keep it all in easy-to-edit files. Home venue is Castle Bromwich Playing Fields unless stated otherwise.
+
+  **U8 Colts**
 
   | Date | Time | Home | Away | Status |
   |---|---|---|---|---|
-  | 06/09/26 | 09:30 | Silhill U8 Tigers | CB Lions U8 Spitfires | Played (DEVP) |
-  | 13/09/26 | 10:30 | CB Lions U8 Spitfires | C C C U8 Greens | Played (DEVP) |
-  | 20/09/26 | 10:30 | Cadbury Athletic U8 Juniors | CB Lions U8 Spitfires | Played (DEVP) |
-  | 27/09/26 | 09:30 | Arden Forest U8 Black | CB Lions U8 Spitfires | Played (DEVP) |
-  | 04/10/26 | 10:30 | CB Lions U8 Spitfires | Vision U8 Lions | Played (DEVP) |
-  | 11/10/26 | 10:30 | CB Lions U8 Spitfires | Olton Ravens U8 Stars | Played (DEVP) |
-  | 18/10/26 | 10:30 | CB Lions U8 Spitfires | Olton Ravens U8 OR | Played (DEVP) |
-  | 25/10/26 | 10:30 | CB Lions U8 Spitfires | C C C U8 Whites | Played (DEVP) |
-  | 01/11/26 | 09:30 | Silhill U8 Bears | CB Lions U8 Spitfires | Played (DEVP) |
-  | 08/11/26 | 11:00 | Bartley Reds U8 | CB Lions U8 Spitfires | Played (DEVP) |
-  | 15/11/26 | 09:30 | Inkberrow Youth U8 Kestrels | CB Lions U8 Spitfires | Played (DEVP) |
-  | 22/11/26 | 10:30 | CB Lions U8 Spitfires | Hampton U8 Reds AOB | Upcoming, Castle Bromwich Playing Fields Pitch 3 |
-  | 29/11/26 | 10:30 | CB Lions U8 Spitfires | Cottage Farm Rangers U8 United | Upcoming, Castle Bromwich Playing Fields Pitch 3 |
+  | 06/09/26 | 10:00 | **CB Lions U8 Colts** | Silhill U8 Lions | Played (DEVP) |
+  | 13/09/26 | 09:30 | Norton Lindsey Juniors U8 All Stars | **CB Lions U8 Colts** | Played (DEVP) |
+  | 20/09/26 | 11:30 | C C C U8 Greens | **CB Lions U8 Colts** | Played (DEVP) |
+  | 27/09/26 | 10:00 | **CB Lions U8 Colts** | Knowle U8 Bobcats | Played (DEVP) |
+  | 04/10/26 | 10:00 | **CB Lions U8 Colts** | Boldmere St Michaels Juniors U8 2018 PE | Played (DEVP) |
+  | 11/10/26 | 10:00 | **CB Lions U8 Colts** | Solihull Moors Foundation U8 Blue | Played (DEVP) |
+  | 18/10/26 | 11:00 | Bartley Reds U8 | **CB Lions U8 Colts** | Played (DEVP) |
+  | 25/10/26 | 11:30 | Coleshill Town U8 Panthers | **CB Lions U8 Colts** | Played (DEVP) |
+  | 01/11/26 | 12:00 | Olton Ravens U8 Stars | **CB Lions U8 Colts** | Played (DEVP) |
+  | 08/11/26 | 10:00 | **CB Lions U8 Colts** | Hollywood United U8 | Played (DEVP) |
+  | 15/11/26 | 10:00 | **CB Lions U8 Colts** | Wychall Wanderers Juniors U8 Colts | Played (DEVP) |
+  | 22/11/26 | 10:00 | **CB Lions U8 Colts** | Arden Forest U8 Yellow | Upcoming, Castle Bromwich Playing Fields Pitch 1A |
+  | 29/11/26 | 09:30 | Stratford Town Colts U8 Bards Aces | **CB Lions U8 Colts** | Upcoming, Arden Garages Stadium 3G Pitch 1A |
+
+  **U8 Cubs** (no fixture on 25/10/26)
+
+  | Date | Time | Home | Away | Status |
+  |---|---|---|---|---|
+  | 06/09/26 | 09:30 | Solihull Moors Foundation U8 AB | **CB Lions U8 Cubs** | Played (DEVP) |
+  | 13/09/26 | 10:30 | **CB Lions U8 Cubs** | Bournville U8 | Played (DEVP) |
+  | 20/09/26 | 10:00 | C C C U8 Hoops | **CB Lions U8 Cubs** | Played (DEVP) |
+  | 27/09/26 | 09:30 | Kings Heath Panthers U8 KDN | **CB Lions U8 Cubs** | Played (DEVP) |
+  | 04/10/26 | 09:30 | Stratford Town Colts U8 Bards Aces | **CB Lions U8 Cubs** | Played (DEVP) |
+  | 11/10/26 | 10:30 | **CB Lions U8 Cubs** | Solihull Moors Foundation U8 Y | Played (DEVP) |
+  | 18/10/26 | 10:30 | **CB Lions U8 Cubs** | Boldmere St Michaels Juniors U8 2018 JA | Played (DEVP) |
+  | 01/11/26 | 10:30 | **CB Lions U8 Cubs** | Kingshurst Pavilions Sports Club U8 Colt | Played (DEVP) |
+  | 08/11/26 | 10:30 | **CB Lions U8 Cubs** | F C Elite U8 Blaze | Played (DEVP) |
+  | 15/11/26 | 11:00 | Kings Heath Panthers U8 TL | **CB Lions U8 Cubs** | Played (DEVP) |
+  | 22/11/26 | 12:00 | Wychall Wanderers Juniors U8 Tigers | **CB Lions U8 Cubs** | Upcoming, Wychall Wanderers FC Pitch 2 |
+  | 29/11/26 | 10:30 | **CB Lions U8 Cubs** | Baller Boys U8 | Listed as "C - C" (cancelled/void), so show it as cancelled |
+
+  **U8 Lions** (no fixture on 15/11/26)
+
+  | Date | Time | Home | Away | Status |
+  |---|---|---|---|---|
+  | 06/09/26 | 11:15 | **CB Lions U8 Lions** | Silhill U8 Bears | Played (DEVP) |
+  | 13/09/26 | 12:30 | Glades U8 | **CB Lions U8 Lions** | Played (DEVP) |
+  | 20/09/26 | 11:15 | **CB Lions U8 Lions** | Coldlands Colts U8 Blacks | Played (DEVP) |
+  | 27/09/26 | 11:15 | **CB Lions U8 Lions** | F C Elite U8 Blaze | Played (DEVP) |
+  | 04/10/26 | 10:30 | Arden Forest U8 S6 | **CB Lions U8 Lions** | Played (DEVP) |
+  | 11/10/26 | 09:30 | Starz Academy U8 CWYFL | **CB Lions U8 Lions** | Played (DEVP) |
+  | 18/10/26 | 09:30 | P and E Sports U8 Madrid | **CB Lions U8 Lions** | Played (DEVP) |
+  | 25/10/26 | 11:15 | **CB Lions U8 Lions** | Sutton United U8 Panthers | Played (DEVP) |
+  | 01/11/26 | 11:15 | **CB Lions U8 Lions** | Hampton U8 | Played (DEVP) |
+  | 08/11/26 | 11:15 | **CB Lions U8 Lions** | Your Performance Group U8 I | Played (DEVP) |
+  | 22/11/26 | 09:30 | Vision U8 BHAM DD | **CB Lions U8 Lions** | Upcoming, Castle Vale Football Stadium CV1C |
+  | 29/11/26 | 11:00 | Vision U8 Lions | **CB Lions U8 Lions** | Upcoming, North Warwickshire & South Leicestershire College (Nuneaton) Pitch 3 |
+
+  **U8 Spitfires**
+
+  | Date | Time | Home | Away | Status |
+  |---|---|---|---|---|
+  | 06/09/26 | 09:30 | Silhill U8 Tigers | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 13/09/26 | 10:30 | **CB Lions U8 Spitfires** | C C C U8 Greens | Played (DEVP) |
+  | 20/09/26 | 10:30 | Cadbury Athletic U8 Juniors | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 27/09/26 | 09:30 | Arden Forest U8 Black | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 04/10/26 | 10:30 | **CB Lions U8 Spitfires** | Vision U8 Lions | Played (DEVP) |
+  | 11/10/26 | 10:30 | **CB Lions U8 Spitfires** | Olton Ravens U8 Stars | Played (DEVP) |
+  | 18/10/26 | 10:30 | **CB Lions U8 Spitfires** | Olton Ravens U8 OR | Played (DEVP) |
+  | 25/10/26 | 10:30 | **CB Lions U8 Spitfires** | C C C U8 Whites | Played (DEVP) |
+  | 01/11/26 | 09:30 | Silhill U8 Bears | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 08/11/26 | 11:00 | Bartley Reds U8 | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 15/11/26 | 09:30 | Inkberrow Youth U8 Kestrels | **CB Lions U8 Spitfires** | Played (DEVP) |
+  | 22/11/26 | 10:30 | **CB Lions U8 Spitfires** | Hampton U8 Reds AOB | Upcoming, Castle Bromwich Playing Fields Pitch 3 |
+  | 29/11/26 | 10:30 | **CB Lions U8 Spitfires** | Cottage Farm Rangers U8 United | Upcoming, Castle Bromwich Playing Fields Pitch 3 |
+
 - Include a README with setup steps, how to edit content, and how to deploy.
 
 ## Deliverables
 1. A working codebase in this repository.
-2. Real fixtures for all four U8 teams (Colts, Cubs, Lions, Spitfires) and sample data for any other age groups for the 2026/27 season, plus the Full-Time import job.
+2. Real 2026/27 fixtures for all four U8 teams (Colts, Cubs, Lions, Spitfires), plus sample news and gallery content for the 2026/27 season, plus the Full-Time import job.
 3. A README and a short admin guide written for club volunteers.
 
 Start by proposing the site map, design direction (red/blue/yellow lion identity, typography, mood) and tech stack in a short plan. Then build the site page by page.
