@@ -15,8 +15,17 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
 - **Home ground:** Arden Hall Playing Fields, Castle Bromwich, Birmingham, **B36 9PB**, United Kingdom
 - **Founded:** [YEAR]
 - **Teams / age groups:** Each team is named by age group plus a nickname, in the format "Castle Bromwich Lions U8 Spitfires". Confirmed so far:
-  - **U8 Spitfires.** Full-Time team ID `457917099`: https://fulltime.thefa.com/displayTeam.html?id=457917099. Plays CWYFL development fixtures ("DEVP"), so no scores or tables are published.
-  - [OTHER TEAMS: age group, nickname and Full-Time team ID for each]
+  - **U8 age group: four teams.** All play CWYFL development fixtures ("DEVP"), so no scores or tables are published. Games played so far in 2026/27 are shown in brackets.
+
+    | Team | Full-Time team ID | Played |
+    |---|---|---|
+    | Castle Bromwich Lions U8 Colts | [ID] | 11 |
+    | Castle Bromwich Lions U8 Cubs | [ID] | 10 |
+    | Castle Bromwich Lions U8 Lions | [ID] | 10 |
+    | Castle Bromwich Lions U8 Spitfires | `457917099` (https://fulltime.thefa.com/displayTeam.html?id=457917099) | 11 |
+
+  - [OTHER AGE GROUPS, if any: age group, nickname and Full-Time team ID for each]
+  - Group teams by age group on the site. The "Our Teams" page lists age groups, and each age group lists its teams. Keep the nicknames (Colts, Cubs, Lions, Spitfires) as each team's identity, and give each team its own page, fixtures feed and calendar.
 - **Club colours (from the crest):** red `#D7262B`, royal blue `#1F4FA3`, yellow/gold `#F7D417`, black `#111111`. White is the neutral.
 - **Crest:** A shield split into red and blue quarters with a yellow border. It shows a crowned yellow lion with two footballs and the words "Castle Bromwich" / "Lions FC". Use the supplied crest file as-is: [PATH TO HIGH-RES CREST FILE]. Don't redesign it.
 - **Current campaign / tagline:** "Say hello to our best season yet."
@@ -105,7 +114,7 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
   - a privacy policy and cookie notice
   - collect only the data you need
   - no public phone numbers for team managers
-- Seed fixtures with the **real U8 Spitfires 2026/27 data** from Full-Time. Use realistic placeholder content, clearly marked as sample data, for the other teams. Keep it all in easy-to-edit files. Real U8 Spitfires fixtures so far:
+- Seed fixtures with the **real U8 Spitfires 2026/27 data** from Full-Time. For the U8 Colts, Cubs and Lions, import their real fixtures from Full-Time once their team IDs are known. Until then, use realistic placeholder content, clearly marked as sample data. Keep it all in easy-to-edit files. Real U8 Spitfires fixtures so far:
 
   | Date | Time | Home | Away | Status |
   |---|---|---|---|---|
@@ -126,7 +135,7 @@ You are building a modern, mobile-first website for **Castle Bromwich Lions FC**
 
 ## Deliverables
 1. A working codebase in this repository.
-2. Real U8 Spitfires fixtures and sample data for the other age groups for the 2026/27 season, plus the Full-Time import job.
+2. Real fixtures for all four U8 teams (Colts, Cubs, Lions, Spitfires) and sample data for any other age groups for the 2026/27 season, plus the Full-Time import job.
 3. A README and a short admin guide written for club volunteers.
 
 Start by proposing the site map, design direction (red/blue/yellow lion identity, typography, mood) and tech stack in a short plan. Then build the site page by page.
